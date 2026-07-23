@@ -1,0 +1,46 @@
+{
+  "name": "repoviz",
+  "displayName": "Repoviz",
+  "description": "Visualize code repositories with AI-generated diagrams.",
+  "version": "0.0.0",
+  "publisher": "kaijukarainen",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaijukarainen/repoviz"
+  },
+  "engines": {
+    "vscode": ">=1.90.0"
+  },
+  "categories": ["Visualization"],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "repoviz.pingEngine",
+        "title": "Repoviz: Ping Engine"
+      }
+    ]
+  },
+  "scripts": {
+    "codegen": "bash ../../scripts/codegen.sh",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext ts",
+    "build": "node esbuild.mjs",
+    "test:integration": "node --test test/integration/*.test.mjs"
+  },
+  "dependencies": {
+    "vscode-jsonrpc": "8.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.1",
+    "@types/vscode": "1.90.0",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
+    "esbuild": "0.23.1",
+    "eslint": "8.57.1",
+    "quicktype": "23.3.25",
+    "typescript": "5.9.3"
+  }
+}

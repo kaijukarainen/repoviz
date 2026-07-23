@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-engine",
+      "type": "shell",
+      "command": "go build -o bin/repoviz-engine ./cmd",
+      "options": { "cwd": "${workspaceFolder}/../../go/repoviz-engine" },
+      "problemMatcher": []
+    },
+    {
+      "label": "build-extension",
+      "type": "shell",
+      "command": "npm run build",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "dependsOrder": "sequence",
+      "dependsOn": ["build-engine", "build-extension"],
+      "problemMatcher": []
+    }
+  ]
+}

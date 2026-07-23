@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://repoviz.dev/contract/protocol.json",
+  "title": "Protocol",
+  "description": "Root wrapper so codegen emits every message type. Not sent on the wire.",
+  "type": "object",
+  "properties": {
+    "handshakeParams": { "$ref": "#/definitions/HandshakeParams" },
+    "handshakeResult": { "$ref": "#/definitions/HandshakeResult" },
+    "healthResult": { "$ref": "#/definitions/HealthResult" }
+  },
+  "definitions": {
+    "HandshakeParams": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": { "type": "integer", "description": "Protocol version the client speaks." },
+        "clientName": { "type": "string" },
+        "clientVersion": { "type": "string" }
+      },
+      "required": ["protocolVersion", "clientName", "clientVersion"]
+    },
+    "HandshakeResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": { "type": "integer", "description": "Protocol version the engine speaks." },
+        "engineName": { "type": "string" },
+        "engineVersion": { "type": "string" },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Named capabilities the engine supports."
+        }
+      },
+      "required": ["protocolVersion", "engineName", "engineVersion", "capabilities"]
+    },
+    "HealthResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ok": { "type": "boolean" },
+        "engineVersion": { "type": "string" }
+      },
+      "required": ["ok", "engineVersion"]
+    }
+  }
+}

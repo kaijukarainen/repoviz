@@ -1,0 +1,12 @@
+# Build artifacts
+go/repoviz-engine/bin/
+typescript/repoviz-extension/dist/
+**/node_modules/
+
+# Repoviz's own gitignored AI index (per design)
+.repoviz/
+
+# Delivery archives
+*.tgz
+
+.repoviz-docs/
